@@ -74,6 +74,9 @@
       <a href="mailto:naceramine49@gmail.com" class="btn-icon floating-btn" aria-label="Email" title="Email">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
       </a>
+      <button id="terminal-toggle" class="btn-icon floating-btn" aria-label="Terminal" title="Terminal (⌘K)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      </button>
       <button id="chatbot-toggle" class="btn-icon floating-btn chatbot-fab" aria-label="AI Chat" title="Ask AI">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0110 10c0 2.5-1 4.8-2.6 6.5L21 22l-4.2-1.8A10 10 0 0112 22 10 10 0 012 12 10 10 0 0112 2z"/><path d="M8 12h8M12 8v8"/></svg>
       </button>
@@ -275,6 +278,21 @@
         </div>
       </section>
     </main>
+
+    <div id="terminal" class="terminal terminal--hidden">
+      <div class="terminal-header">
+        <span class="terminal-title">developer@portfolio:~$</span>
+        <div class="terminal-actions">
+          <button id="term-clear" class="btn-icon" aria-label="Clear" title="Clear">⊘</button>
+          <button id="term-close" class="btn-icon" aria-label="Close terminal" title="Close">✕</button>
+        </div>
+      </div>
+      <div class="terminal-output" id="term-output"></div>
+      <div class="terminal-input-line">
+        <span class="term-prompt">$</span>
+        <input type="text" id="term-input" class="term-input" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" />
+      </div>
+    </div>
 
     <div id="project-modal" class="modal chatbot--hidden">
       <div class="modal-backdrop" id="modal-backdrop"></div>

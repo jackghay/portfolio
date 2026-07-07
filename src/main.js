@@ -6,6 +6,7 @@ import { initChatbot } from './components/Chatbot.js';
 import { initCustomCursor } from './components/CustomCursor.js';
 import { initBackToTop } from './components/BackToTop.js';
 import { initGitHubStats } from './components/GitHubStats.js';
+import { initTerminal } from './components/Terminal.js';
 import { initHero } from './sections/Hero.js';
 import { initAbout } from './sections/About.js';
 import { initSkills } from './sections/Skills.js';
@@ -23,6 +24,7 @@ function initApp() {
   initHero();
   initAbout();
   initGitHubStats();
+  initTerminal();
   initSkills();
   initProjects();
   initExperience();
