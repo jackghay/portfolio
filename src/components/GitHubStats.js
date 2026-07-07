@@ -1,5 +1,5 @@
 const GITHUB_USER = 'jackghay';
-const CACHE_KEY = 'gh-stats-2';
+const CACHE_KEY = 'gh-stats-3';
 const CACHE_TTL = 3600000;
 
 function sanitize(str) {
@@ -54,7 +54,7 @@ function render(data) {
 
   el.innerHTML = '';
   const safe = {
-    avatar: data.avatar.replace(/[^\w\-.:/]/g, ''),
+    avatar: data.avatar.replace(/[^\w\-.:/?#@!$&'()*+,;=]/g, ''),
     ghUrl: data.ghUrl.replace(/[^\w\-.:/?#@!$&'()*+,;=]/g, ''),
     bio: sanitize(data.bio || 'Full-Stack Developer & AI Engineer'),
   };
@@ -62,7 +62,7 @@ function render(data) {
   const langs = Array.isArray(data.topLangs) ? data.topLangs : [];
   const langHtml = langs.length
     ? '<div class="gh-langs">' + langs.map(([lang]) =>
-        '<span class="gh-lang" style="--gh-color:' + encodeURIComponent(langColor(lang)) + '">' + sanitize(lang) + '</span>'
+        '<span class="gh-lang" style="--gh-color:' + langColor(lang) + '">' + sanitize(lang) + '</span>'
       ).join('') + '</div>'
     : '';
 

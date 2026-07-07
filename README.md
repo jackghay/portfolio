@@ -69,11 +69,19 @@ When a potential client or employer visits this site, I want them to feel:
 portfolio/
 ├── index.html              # SPA shell — inline-script-free
 ├── vite.config.js          # SRI plugin, code splitting, sourcemap:false
+├── netlify.toml             # Build command + headers + redirects
+├── scripts/
+│   └── generate-assets.cjs  # Generates PWA icons, favicon, og-image
 ├── public/
 │   ├── _headers            # Netlify: CSP, HSTS, XFO, XCTO, RP, PP
 │   ├── sw.js               # Service Worker (scoped, validated)
 │   ├── manifest.json       # PWA manifest
 │   ├── robots.txt          # SEO
+│   ├── 404.html            # Custom error page
+│   ├── icon-192.png        # PWA icon
+│   ├── icon-512.png        # PWA icon
+│   ├── favicon.ico          # Browser favicon
+│   ├── og-image.png        # Open Graph social preview
 │   └── .well-known/
 │       └── security.txt    # Security disclosure
 ├── src/
@@ -293,25 +301,51 @@ npm run build
 npm run preview
 ```
 
+### Quick Start
+
+```bash
+git clone https://github.com/jackghay/portfolio.git
+cd portfolio
+npm install
+node scripts/generate-assets.cjs    # Generate PWA icons, favicon, og-image
+npm run dev                          # Local preview at localhost:5173
+```
+
 ### Before Deploying
 
 1. **Formspree**: Replace `FORMSPREE_URL` in `src/sections/Contact.js:3` with your endpoint
 2. **CV**: Replace `public/cv-placeholder.html` with `public/cv.pdf` and update links in `index.html`
-3. **Plausible**: Uncomment the script in `index.html` and set your domain
-4. **OG Image**: Add `public/og-image.png` (1200×630, replace URL in `<meta>` tags)
+3. **Domain**: Update `https://amine-nasser-allah.dev` in `index.html` (canonical + OG), `public/robots.txt`, `public/sitemap.xml`, `public/.well-known/security.txt` to your domain
+4. **Plausible**: Uncomment the script in `index.html` and set your domain
+5. **Assets**: Run `node scripts/generate-assets.cjs` to regenerate PWA icons and OG image with your brand colors
 
 ---
 
 ## 🌐 Deployment
 
-| Platform | Config |
-|---|---|
-| **Netlify** | `public/_headers` works automatically |
-| **Vercel** | Convert `_headers` to `vercel.json` at root |
-| **Cloudflare Pages** | Copy headers to `_headers` or dashboard |
-| **GitHub Pages** | Use GitHub Actions or `gh-pages` branch |
+### Netlify (Recommended — One-Click)
 
-All platforms support the `_headers` file for security headers.
+```bash
+# 1. Install Netlify CLI
+npm install -g netlify-cli
+
+# 2. Build
+npm run build
+
+# 3. Deploy
+netlify deploy --prod --dir=dist
+```
+
+Or connect your GitHub repo to [Netlify](https://app.netlify.com) — it reads `netlify.toml` automatically.
+
+| Platform | Notes |
+|---|---|
+| **Netlify** | `netlify.toml` + `public/_headers` both work. Recommended. |
+| **Vercel** | Convert `_headers` to `vercel.json` or use Security Headers UI |
+| **Cloudflare Pages** | Copy headers from `_headers` into Dashboard > Headers |
+| **GitHub Pages** | SPA routing requires a `404.html` trick; use `gh-pages` branch |
+
+> **All platforms**: Set `FORCE_HTTPS` in your hosting dashboard so HSTS preload can be applied.
 
 ---
 

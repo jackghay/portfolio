@@ -11,10 +11,21 @@ export function initNavbar() {
   const themeToggle = document.getElementById('theme-toggle');
   if (!navbar) return;
 
-  hamburger?.addEventListener('click', () => {
-    navLinks?.classList.toggle('open');
-    hamburger.textContent = navLinks?.classList.contains('open') ? '✕' : '☰';
-  });
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      if (navLinks) {
+        const isOpen = navLinks.classList.contains('open');
+        if (isOpen) {
+          navLinks.classList.remove('open');
+          navLinks.style.display = '';
+        } else {
+          navLinks.classList.add('open');
+          navLinks.style.display = 'flex';
+        }
+        hamburger.textContent = isOpen ? '☰' : '✕';
+      }
+    });
+  }
 
   navLinks?.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
@@ -24,11 +35,16 @@ export function initNavbar() {
   });
 
   if (langToggle) {
-    langToggle.textContent = getLang() === 'en' ? 'AR' : 'EN';
+    const langCycle = { en: 'AR', ar: 'FR', fr: 'EN' };
+    try { langToggle.textContent = langCycle[getLang()] || 'EN'; } catch {}
     langToggle.addEventListener('click', () => {
-      const next = getLang() === 'en' ? 'ar' : 'en';
-      setLang(next);
-      langToggle.textContent = next === 'en' ? 'AR' : 'EN';
+      const order = ['en', 'ar', 'fr'];
+      const current = getLang();
+      const next = order[(order.indexOf(current) + 1) % order.length];
+      try {
+        setLang(next);
+        langToggle.textContent = langCycle[next];
+      } catch {}
     });
   }
 

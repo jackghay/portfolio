@@ -1,6 +1,7 @@
 import { t } from '../i18n.js';
 
 const FORMSPREE_URL = 'https://formspree.io/f/';
+const CALENDLY_URL = 'https://calendly.com/YOUR_USERNAME/30min';
 const RATE_LIMIT_MS = 30000;
 const RATE_KEY = 'contact-last-send';
 
@@ -19,6 +20,14 @@ function validateForm(name, email, message) {
 export function initContact() {
   const form = document.getElementById('contact-form');
   if (!form) return;
+
+  const bookingBtn = document.getElementById('booking-cta');
+  if (bookingBtn) {
+    bookingBtn.addEventListener('click', e => {
+      e.preventDefault();
+      window.open(CALENDLY_URL, '_blank', 'noopener');
+    });
+  }
 
   const honeypot = document.getElementById('form-honeypot');
   const isConfigured = () => FORMSPREE_URL !== 'https://formspree.io/f/';

@@ -19,8 +19,21 @@ export function initProjectModal() {
       ? '<div class="modal-section"><h3 class="modal-section-title">Key Features</h3><ul class="modal-features">' +
         features.map(f => '<li>' + sanitize(f) + '</li>').join('') + '</ul></div>'
       : '';
+
+    const problemHtml = project.problem
+      ? '<div class="modal-section"><div class="case-block case-problem"><div class="case-label">Problem</div><p>' + sanitize(project.problem) + '</p></div></div>'
+      : '';
+
+    const solutionHtml = project.solution
+      ? '<div class="modal-section"><div class="case-block case-solution"><div class="case-label">Solution</div><p>' + sanitize(project.solution) + '</p></div></div>'
+      : '';
+
+    const resultHtml = project.result
+      ? '<div class="modal-section"><div class="case-block case-result"><div class="case-label">Result</div><p>' + sanitize(project.result) + '</p></div></div>'
+      : '';
+
     const challengeHtml = project.challenges
-      ? '<div class="modal-section"><h3 class="modal-section-title">Challenges Solved</h3><p class="modal-challenge">' + sanitize(project.challenges) + '</p></div>'
+      ? '<div class="modal-section"><h3 class="modal-section-title">Technical Challenge</h3><p class="modal-challenge">' + sanitize(project.challenges) + '</p></div>'
       : '';
 
     body.innerHTML = [
@@ -31,6 +44,9 @@ export function initProjectModal() {
       '<div class="modal-body-content">',
         '<p class="modal-desc">' + sanitize(project.fullDesc || project.desc) + '</p>',
         featureHtml,
+        problemHtml,
+        solutionHtml,
+        resultHtml,
         challengeHtml,
       '</div>',
       '<div class="modal-footer">',

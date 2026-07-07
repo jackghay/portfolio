@@ -1,3 +1,10 @@
+function sanitize(str) {
+  if (typeof str !== 'string') return '';
+  const el = document.createElement('div');
+  el.textContent = str;
+  return el.innerHTML;
+}
+
 import { testimonials } from '../data.js';
 
 export function initTestimonials() {
@@ -14,12 +21,12 @@ export function initTestimonials() {
         <div class="testimonial-quote">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="var(--accent)" opacity="0.15"><path d="M10 11H6a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.5-1.5 4-4 4v-2c1.5 0 2-1 2-2v-1zm10 0h-4a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.5-1.5 4-4 4v-2c1.5 0 2-1 2-2v-1z"/></svg>
         </div>
-        <p class="testimonial-card-text">${t.text}</p>
+        <p class="testimonial-card-text">${sanitize(t.text)}</p>
         <div class="testimonial-card-author">
-          <div class="testimonial-card-avatar">${t.name.charAt(0)}</div>
+          <div class="testimonial-card-avatar">${sanitize(t.name.charAt(0))}</div>
           <div>
-            <div class="testimonial-card-name">${t.name}</div>
-            <div class="testimonial-card-role">${t.role}</div>
+            <div class="testimonial-card-name">${sanitize(t.name)}</div>
+            <div class="testimonial-card-role">${sanitize(t.role)}</div>
           </div>
         </div>
       </div>

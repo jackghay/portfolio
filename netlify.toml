@@ -1,0 +1,30 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), fullscreen=(self), display-capture=()"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com https://formspree.io https://huggingface.co; worker-src 'self' blob:; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests; block-all-mixed-content; form-action 'self' https://formspree.io"
+
+[[redirects]]
+  from = "/cv"
+  to = "/cv.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/security.txt"
+  to = "/.well-known/security.txt"
+  status = 200

@@ -1,3 +1,10 @@
+function sanitize(str) {
+  if (typeof str !== 'string') return '';
+  const el = document.createElement('div');
+  el.textContent = str;
+  return el.innerHTML;
+}
+
 import { skills } from '../data.js';
 
 export function initSkills() {
@@ -7,7 +14,7 @@ export function initSkills() {
   grid.innerHTML = skills.map((skill, i) => `
     <div class="glass-card skill-card reveal" style="animation-delay:${i * 0.05}s">
       <div class="skill-info">
-        <span class="skill-name">${skill.name}</span>
+        <span class="skill-name">${sanitize(skill.name)}</span>
         <span class="skill-percent">${skill.level}%</span>
       </div>
       <div class="skill-bar">

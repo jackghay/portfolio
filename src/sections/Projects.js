@@ -1,6 +1,13 @@
 import { projects } from '../data.js';
 import { initProjectModal } from '../components/ProjectModal.js';
 
+function sanitize(str) {
+  if (typeof str !== 'string') return '';
+  const el = document.createElement('div');
+  el.textContent = str;
+  return el.innerHTML;
+}
+
 function projectVisual(project) {
   const gradients = {
     web: 'linear-gradient(135deg, #00d4ff, #7c3aed)',
@@ -16,7 +23,7 @@ function projectVisual(project) {
     <div class="project-visual" style="background: ${gradients[project.category] || gradients.web}">
       <div class="project-visual-inner">
         ${icons[project.category] || icons.web}
-        <span class="project-visual-label">${project.category}</span>
+        <span class="project-visual-label">${sanitize(project.category)}</span>
       </div>
       <div class="project-visual-shine"></div>
     </div>
@@ -37,9 +44,9 @@ export function initProjects() {
       <div class="glass-card project-card reveal" style="animation-delay:${i * 0.08}s" data-index="${i}">
         ${projectVisual(project)}
         <div class="project-info">
-          <h3 class="project-title">${project.title}</h3>
-          <p class="project-desc">${project.desc}</p>
-          <div class="project-tags">${project.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          <h3 class="project-title">${sanitize(project.title)}</h3>
+          <p class="project-desc">${sanitize(project.desc)}</p>
+          <div class="project-tags">${project.tags.map(t => `<span class="tag">${sanitize(t)}</span>`).join('')}</div>
         </div>
       </div>
     `).join('');

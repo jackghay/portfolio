@@ -15,6 +15,7 @@ import { initExperience } from './sections/Experience.js';
 import { initAIWorkflow } from './sections/AIWorkflow.js';
 import { initTestimonials } from './sections/Testimonials.js';
 import { initBlog } from './sections/Blog.js';
+import { initProcess } from './sections/Process.js';
 import { initContact } from './sections/Contact.js';
 
 function initApp() {
@@ -31,6 +32,7 @@ function initApp() {
   initAIWorkflow();
   initTestimonials();
   initBlog();
+  initProcess();
   initContact();
 
   if (window.innerWidth >= 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
