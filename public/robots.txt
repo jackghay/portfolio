@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amine-nasser-allah.dev/sitemap.xml

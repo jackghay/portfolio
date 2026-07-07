@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Cairo:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --font-arabic: 'Cairo', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 30px var(--accent);
+}
+
+[data-theme='dark'] {
+  --bg: #0a0a1a;
+  --bg-alt: #111128;
+  --bg-card: rgba(17, 17, 40, 0.8);
+  --text: #e2e8f0;
+  --text-alt: #94a3b8;
+  --accent: #00d4ff;
+  --accent-alt: #7c3aed;
+  --accent-warm: #f59e0b;
+  --glass-bg: rgba(10, 10, 26, 0.6);
+  --glass-border: rgba(0, 212, 255, 0.15);
+  --glass-shadow: 0 8px 32px rgba(0, 212, 255, 0.05);
+  --nav-bg: rgba(10, 10, 26, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.06);
+  --scrollbar-bg: #0a0a1a;
+  --scrollbar-thumb: #1a1a3e;
+  --selection-bg: rgba(0, 212, 255, 0.3);
+  --overlay: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='light'] {
+  --bg: #f8fafc;
+  --bg-alt: #e2e8f0;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --text: #0f172a;
+  --text-alt: #475569;
+  --accent: #2563eb;
+  --accent-alt: #7c3aed;
+  --accent-warm: #d97706;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(37, 99, 235, 0.15);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --nav-bg: rgba(248, 250, 252, 0.85);
+  --nav-border: rgba(0, 0, 0, 0.06);
+  --scrollbar-bg: #f1f5f9;
+  --scrollbar-thumb: #94a3b8;
+  --selection-bg: rgba(37, 99, 235, 0.2);
+  --overlay: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='neon'] {
+  --bg: #050510;
+  --bg-alt: #0a0a20;
+  --bg-card: rgba(8, 8, 25, 0.85);
+  --text: #e2e8f0;
+  --text-alt: #94a3b8;
+  --accent: #ff00ff;
+  --accent-alt: #00ff88;
+  --accent-warm: #ff6600;
+  --glass-bg: rgba(5, 5, 16, 0.7);
+  --glass-border: rgba(255, 0, 255, 0.25);
+  --glass-shadow: 0 8px 32px rgba(255, 0, 255, 0.08);
+  --nav-bg: rgba(5, 5, 16, 0.85);
+  --nav-border: rgba(255, 0, 255, 0.1);
+  --scrollbar-bg: #050510;
+  --scrollbar-thumb: #1a0033;
+  --selection-bg: rgba(255, 0, 255, 0.3);
+  --overlay: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='chrome'] {
+  --bg: #12121f;
+  --bg-alt: #1a1a2e;
+  --bg-card: rgba(26, 26, 46, 0.8);
+  --text: #e2e8f0;
+  --text-alt: #9ca3af;
+  --accent: #e2e8f0;
+  --accent-alt: #00d4ff;
+  --accent-warm: #fbbf24;
+  --glass-bg: rgba(18, 18, 31, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(192, 192, 192, 0.04);
+  --nav-bg: rgba(18, 18, 31, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.05);
+  --scrollbar-bg: #12121f;
+  --scrollbar-thumb: #2a2a4a;
+  --selection-bg: rgba(255, 255, 255, 0.15);
+  --overlay: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='hologram'] {
+  --bg: #0d0d1a;
+  --bg-alt: #1a1a2e;
+  --bg-card: rgba(26, 26, 46, 0.8);
+  --text: #e2e8f0;
+  --text-alt: #a5b4fc;
+  --accent: #ff6b6b;
+  --accent-alt: #4ecdc4;
+  --accent-warm: #ffd93d;
+  --glass-bg: rgba(13, 13, 26, 0.6);
+  --glass-border: rgba(255, 107, 107, 0.15);
+  --glass-shadow: 0 8px 32px rgba(255, 107, 107, 0.06);
+  --nav-bg: rgba(13, 13, 26, 0.85);
+  --nav-border: rgba(255, 107, 107, 0.08);
+  --scrollbar-bg: #0d0d1a;
+  --scrollbar-thumb: #2a1a3e;
+  --selection-bg: rgba(255, 107, 107, 0.25);
+  --overlay: rgba(0, 0, 0, 0.6);
+}
+
+::selection {
+  background: var(--selection-bg);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  background: var(--bg);
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+  overflow-x: hidden;
+}
+
+[dir='rtl'] body {
+  font-family: var(--font-arabic), var(--font-body);
+}

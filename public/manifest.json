@@ -1,0 +1,15 @@
+{
+  "name": "Amine Nasser Allah | Full-Stack Developer & AI Engineer",
+  "short_name": "Amine Portfolio",
+  "description": "Portfolio of Amine Nasser Allah - Full-Stack Developer & AI Engineer",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a1a",
+  "theme_color": "#0a0a1a",
+  "categories": ["portfolio", "development", "technology"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
