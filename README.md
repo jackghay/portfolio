@@ -1,6 +1,6 @@
 # Amine Nasser Allah — Portfolio
 
-**`Full-Stack Developer & AI Engineer`** · `Vite 6 + Vanilla JS` · `Three.js` · `Transformers.js (WebGPU)` · `5 Themes` · `PWA` · `Bilingual AR/EN`
+**`Full-Stack Developer & AI Engineer`** · `Vite 6 + Vanilla JS` · `Three.js` · `Transformers.js (WebGPU)` · `5 Themes` · `PWA` · `Trilingual EN/AR/FR`
 
 > Architecture — Performance — Precision — Security
 
@@ -29,7 +29,7 @@ This is not just a portfolio. It is a **living case study** of how I build softw
 - **Code quality**: Clean, modular ESM architecture with zero frameworks
 - **Security**: Enterprise-grade — CSP, HSTS, SRI, XSS-free, Honeypot, Rate-limited
 - **Performance**: Lazy loading, code splitting, RAF-throttled handlers, `content-visibility`
-- **UX**: 5 unique themes, bilingual AR/EN with full RTL, AI chatbot with real RAG pipeline
+- **UX**: 5 unique themes, trilingual EN/AR/FR with full RTL, AI chatbot with real RAG pipeline
 - **AI**: Client-side vector search via Transformers.js + WebGPU — no server, no API keys
 
 ---
@@ -57,7 +57,7 @@ When a potential client or employer visits this site, I want them to feel:
 | **AI** | Transformers.js + WebGPU (Worker) | Client-side RAG pipeline |
 | **Themes** | CSS Custom Properties | 5 themes: Dark, Light, Neon, Chrome, Hologram |
 | **PWA** | Service Worker + Manifest | Offline-capable, installable |
-| **I18n** | Custom runtime | EN/AR with RTL support |
+| **I18n** | Custom runtime | EN/AR/FR with RTL support |
 | **Security** | CSP, HSTS, SRI, Honeypot | Enterprise-level headers |
 | **Fonts** | Space Grotesk + Inter + JetBrains Mono + Cairo | Typography & Arabic support |
 
@@ -91,7 +91,7 @@ portfolio/
 │   ├── theme.js            # Theme cycler + localStorage
 │   ├── scrollEffects.js    # IntersectionObserver + RAF throttle
 │   ├── components/         # Reusable UI components
-│   │   ├── Navbar.js       # Responsive nav + scroll hide
+│   │   ├── Navbar.js       # Responsive nav + scroll hide + lang cycle
 │   │   ├── Chatbot.js      # AI chatbot with sanitized output
 │   │   ├── GitHubStats.js  # Live GitHub profile data
 │   │   ├── ProjectModal.js # Case study modal
@@ -103,10 +103,11 @@ portfolio/
 │   │   ├── Skills.js       # Animated bars
 │   │   ├── Projects.js     # Filterable grid + gradient visuals
 │   │   ├── Experience.js   # Timeline
-│   │   ├── AIWorkflow.js   # Pipeline cards
+│   │   ├── AIWorkflow.js   # Pipeline cards (i18n)
+│   │   ├── Process.js      # 4-step workflow cards (i18n)
 │   │   ├── Testimonials.js # Auto-rotate carousel
 │   │   ├── Blog.js         # Technical articles with modals
-│   │   └── Contact.js      # Honeypot + Rate limit + Validation
+│   │   └── Contact.js      # Honeypot + Rate limit + Validation + Calendly CTA
 │   ├── effects/
 │   │   ├── threeHero.js    # Lazy-loaded Three.js scene
 │   │   └── generativeArt.js# Lazy-loaded canvas art
@@ -155,11 +156,13 @@ User Query → Embed (all-MiniLM-L6-v2) → Cosine Similarity → Best Context �
 | Chrome | Metallic silver | `#e8e8ec` |
 | Hologram | Iridescent rainbow | `#0a0015` |
 
-### Bilingual AR/EN
+### Trilingual EN/AR/FR
 
 - Full RTL support via `dir="rtl"` on `<html>`
 - Arabic typography via Cairo font family
 - All text managed through `data-i18n` attributes
+- Language toggle cycles EN → AR → FR → EN
+- Dynamic components (Hero typing, AI pipeline, Process steps) re-render on language change
 
 ### Visual Effects
 
@@ -195,7 +198,7 @@ This portfolio treats security as a **first-class feature**, not an afterthought
 | XSS via `innerHTML` with user text | **Critical** | `Chatbot.js:81` | → `textContent + createElement` |
 | No Content Security Policy | **Critical** | index.html | → CSP in `_headers` restricting all sources |
 | No HSTS / HTTPS enforcement | **High** | — | → `Strict-Transport-Security: max-age=31536000; preload` |
-| No X-Frame-Options | **High** | — | → `DENY` (prevents clickjacking) |
+| Redundant X-Frame-Options | — | `_headers` | → Removed (CSP `frame-ancestors` covers it) |
 | No Rate Limiting on form | **High** | `Contact.js` | → 30s rate limit via localStorage |
 | No Input Validation | **Medium** | Contact form | → Honeypot + regex email + length checks |
 | No Referrer Policy | **Medium** | — | → `strict-origin-when-cross-origin` |
@@ -212,7 +215,6 @@ This portfolio treats security as a **first-class feature**, not an afterthought
 ```http
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
 Referrer-Policy: strict-origin-when-cross-origin
 Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), ...
 Content-Security-Policy: default-src 'self'; script-src 'self'; ...
